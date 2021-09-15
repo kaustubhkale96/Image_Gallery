@@ -1,0 +1,6 @@
+body {
+    background-image: linear-gradient(to bottom, #E6DADA 0%, #274046 100%);
+    background-size: cover;
+    height: 100vh;
+    background-attachment: fixed;
+}

@@ -1,0 +1,58 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+}
+.appbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    background: none;
+}
+.Title{
+    font-family: 'Lobster', cursive;
+    font-weight: 600;
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to bottom, #000000 0%, #e74c3c 100%);
+}
+.search{
+    margin: 10px;
+    padding: 10px;    
+}
+.searchInput{
+border: 1px solid ;
+}
+.gallery{
+    -webkit-column-count: 5;
+    -moz-column-count: 5;
+    column-count: 5;
+    -webkit-column-width: 33%;
+    -moz-column-width: 33%;
+    column-width: 33%;
+    padding: 0 12px;
+}
+.image{
+    border-radius: 12px;
+}
+.gallery .image{
+    -webkit-transition: all 350ms ease;
+    transition: all 350ms ease;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+.gallery .image:hover{
+    filter:opacity(0.9);
+    transform: scale(1.5);
+}
+@media (max-width:990px){
+    .gallery{
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
