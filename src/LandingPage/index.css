@@ -21,11 +21,22 @@
     background-image: linear-gradient(to bottom, #000000 0%, #e74c3c 100%);
 }
 .search{
+    display: flex;
     margin: 10px;
-    padding: 10px;    
+    padding: 10px;
+    align-items: center;
 }
 .searchInput{
-border: 1px solid ;
+    border-radius: 4px;
+    border: none;
+    padding: 5px;
+}
+.errorSearch{
+    margin: 8px;
+}
+.button{
+    margin: 5px;
+    font-size: 1.5rem;
 }
 .gallery{
     -webkit-column-count: 5;
@@ -47,7 +58,7 @@ border: 1px solid ;
 }
 .gallery .image:hover{
     filter:opacity(0.9);
-    transform: scale(1.5);
+    transform: scale(1.1);
 }
 @media (max-width:990px){
     .gallery{
