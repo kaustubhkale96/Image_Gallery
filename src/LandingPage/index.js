@@ -15,7 +15,7 @@ export default function LandingPage() {
     console.log()
     useEffect(() => {
         const getImage = () => {
-            return axios(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=26&format=json&nojsoncallback=1&extras=url_s`)
+            return axios(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=26&format=json&nojsoncallback=1&extras=url_s,tags`)
                 .then((response) => {
                     console.log(response.data.photos);
                     setImage(response.data.photos.photo);
@@ -26,18 +26,22 @@ export default function LandingPage() {
 
     const submit = (e) => {
         e.preventDefault();
-        const searchText = image.filter((value) => {
-            return value.title.toLowerCase().includes(text.toLocaleLowerCase());
+        axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${text}&per_page=26&format=json&nojsoncallback=1&extras=url_s,tags`)
+            .then((res) => {
+                console.log(res)
+                const searchText = res.data.photos.photo.filter((item) => {
+                    console.log("value", item)
+                    return item.tags.toLowerCase().includes(text.toLowerCase());
+                });
+                setSearch(searchText);
+                console.log("text", text)
 
-        });
-        setSearch(searchText);
-        console.log("text", text)
-
-        if (searchText.length === 0) {
-            setData(false);
-        } else {
-            setData(true);
-        }
+                if (searchText.length === 0) {
+                    setData(false);
+                } else {
+                    setData(true);
+                }
+            })
     }
 
     const searchImage = (e) => {
@@ -65,28 +69,28 @@ export default function LandingPage() {
                     </form>
                     <div>
                         {Data === false && (
-                            <div >
-                                <h3 className="errorSearch">Sorry! no results for: {text}</h3>
+                            <div className="errorSearch">
+                                <h3>Sorry! no results for: {text}</h3>
                             </div>
                         )}
                     </div>
-                    <div className="gallery">
-                        {search.length !== 0 ? search.map((item, index) => (
-                            <div className="image" key={index}>
-                                <img src={item.url_s} alt="img" style={{ width: "100%", borderRadius: "5px" }} />
-                            </div>
-                        )) :
-                            <div>
-                                {image.map((item, index) => (
-                                    <div className="image" key={index}>
-                                        <img src={item.url_s} alt="img" style={{ width: "100%", borderRadius: "5px" }} />
-                                    </div>
-                                ))}
-                            </div>
-                        }
+                    <div>
+                        <div className="gallery">
+                            {search.length !== 0 ? search.map((item, index) => (
+                                <div className="image" key={index}>
+                                    <img src={item.url_s} alt="img" style={{ width: "100%", borderRadius: "5px" }} />
+                                </div>
+                            )) :
+                                <div>
+                                    {image.map((item, index) => (
+                                        <div className="image" key={index}>
+                                            <img src={item.url_s} alt="img" style={{ width: "100%", borderRadius: "5px" }} />
+                                        </div>
+                                    ))}
+                                </div>
+                            }
+                        </div>
                     </div>
-
-
                 </div>
             </div>
         </React.Fragment>
