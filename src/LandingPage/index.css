@@ -23,13 +23,17 @@
 .search{
     display: flex;
     margin: 10px;
-    padding: 10px;
+    padding: 5px;
     align-items: center;
+    border:1px solid grey;
+    border-radius: 10px;
+    background-color: white;
 }
 .searchInput{
-    border-radius: 4px;
     border: none;
-    padding: 5px;
+}
+.searchInput:focus{
+    outline: none;
 }
 .errorSearch{
     margin: 8px;
@@ -42,19 +46,21 @@
     -webkit-column-count: 5;
     -moz-column-count: 5;
     column-count: 5;
-    -webkit-column-width: 33%;
-    -moz-column-width: 33%;
-    column-width: 33%;
+    -webkit-column-width: 40%;
+    -moz-column-width: 40%;
+    column-width: 40%;
+    column-gap:40px;
     padding: 0 12px;
 }
 .image{
     border-radius: 12px;
+    margin: 10px;
 }
 .gallery .image{
     -webkit-transition: all 350ms ease;
     transition: all 350ms ease;
     cursor: pointer;
-    margin-bottom: 12px;
+    margin: 12px;
 }
 .gallery .image:hover{
     filter:opacity(0.9);
