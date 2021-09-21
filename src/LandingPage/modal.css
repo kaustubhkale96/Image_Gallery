@@ -1,0 +1,19 @@
+
+.modal-content{
+    opacity: 90%;
+}
+.modal-image{
+    width: auto;
+}
+.close{
+    border: none;
+    border-radius: 10px;
+}
+.modal-body{
+    display: flex;
+    justify-content: center;
+}
+.bi-download{
+    font-size: 1.5rem;
+    color: rgb(13, 96, 248);
+}    
